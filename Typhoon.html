@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+        Junshin High School - Typhoon Game
+        </title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Brandon Wethy">
+
+
+	</head>
+	<style>
+		@font-face {
+  font-family: "Press Start 2P";
+  src: url("./PressStart2P-Regular.ttf") format("truetype");
+}
+		@font-face {
+  font-family: "Bungee Tint";
+  src: url("./BungeeTint-Regular.ttf") format("truetype");
+}
+	body {
+	font-family: "Press Start 2P", system-ui;
+	}
+    #master {
+	text-align: center;
+	}
+	.Typhoon_title {
+	color: red;
+	-webkit-animation: flash linear s infinite;
+    animation: flash linear 5s infinite;
+	}
+	@-webkit-keyframes flash {
+    0% { opacity: 0; } 
+    20% { opacity: 0; } 
+    30% { opacity: 1; }
+	}
+	@keyframes flash {
+    0% { opacity: 0; } 
+    20% { opacity: 0; } 
+    30% { opacity: 1; }
+	}
+	.image-card {
+	  position: relative; /* establishes stacking context */
+	  display: inline-block;
+	}
+	.image-card img {
+	  display: block;
+	  width: 100%;
+	}
+	.overlay-text {
+	  font-family: "Bungee Tint", sans-serif;
+	  position: absolute;
+	  top: 20%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  
+	  color: white;
+	  font-size: 24px;
+	  text-align: center;
+
+	  z-index: 2; /* ensures it sits above the image */
+	}
+	.image-card img {
+	  margin-top: -20px;
+	  z-index: 1;
+	  position: relative;
+	}
+	h3{
+	padding-top: 80px;
+	margin-left: -50px;
+	margin-top: 180px;
+	font-size: 150pt;
+	}
+	h2{
+	margin-top: -250px;
+	font-size: 80pt;
+	}
+	figure img {
+	  animation: zoomInOut 4s ease-in-out infinite;
+	  transform-origin: center;
+	}
+
+	@keyframes zoomInOut {
+	  0%   { transform: scale(1); }
+	  50%  { transform: scale(1.05); } /* 🔥 smaller zoom */
+	  100% { transform: scale(1); }
+	}
+	</style>
+	<script>
+
+	</script>
+	 <body>
+           <div id="master">
+		        <div id="wrapper">
+					<header>
+							<div class="TyphoonBoard"></div>
+							<h1>OH NO! THERE'S A</h1>
+							<div class="Typhoon_title"><h1>TYPHOON!<h1></div>
+
+					</header>
+					<main>
+					<figure class="image-card">
+						<img src="Typhoon.png" alt="Example">
+						<figcaption class="overlay-text">
+							<h3>-6</h3>
+							<h2>Points</h2>
+						</figcaption>
+					</figure>
+					</main>
+				</div>
+		   </div>
+	</body>
+	
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+        Junshin High School - Typhoon Game
+        </title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Brandon Wethy">
+
+
+	</head>
+	<style>
+				@font-face {
+  font-family: "Press Start 2P";
+  src: url("./PressStart2P-Regular.ttf") format("truetype");
+}
+		@font-face {
+  font-family: "Honk";
+  src: url("./Honk-Regular-VariableFont_MORF,SHLN.ttf") format("truetype");
+}
+	body {
+	font-family: "Press Start 2P", system-ui;
+	}
+    #master {
+	text-align: center;
+	}
+	.Typhoon_title {
+	 color: red;
+	}
+	.image-card {
+	  position: relative; /* establishes stacking context */
+	  display: inline-block;
+	}
+	.image-card img {
+	  display: block;
+	  width: 100%;
+	}
+	.overlay-text {
+	  font-family: "Honk", system-ui;
+	  position: absolute;
+	  top: 20%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  
+	  color: white;
+	  font-size: 24px;
+	  text-align: center;
+
+	  z-index: 2; /* ensures it sits above the image */
+	}
+	.image-card img {
+	  margin-top: -30px;
+	  z-index: 1;
+	  position: relative;
+	}
+	h3{
+	padding-top: 300px;
+	margin-top: 300px;
+	font-size: 100pt;
+	}
+	h2{
+	margin-top: -200px;
+	font-size: 80pt;
+	}
+	figure img {
+	  animation: slideLR 5s ease-in-out infinite;
+	}
+
+	@keyframes slideLR {
+	  0%   { transform: translateX(-20px); }
+	  50%  { transform: translateX(20px); }
+	  100% { transform: translateX(-20px); }
+	}
+		</style>
+	<script>
+
+	</script>
+	 <body>
+           <div id="master">
+		        <div id="wrapper">
+					<header>
+							<div class="TyphoonBoard"></div>
+							<h1>Uh Oh! You hit a</h1>
+							<div class="Typhoon_title"><h1>Windstorm!<h1></div>
+
+					</header>
+					<main>
+					<figure class="image-card">
+						<img src="wind.png" alt="Example">
+						<figcaption class="overlay-text">
+							<h3>Swap</h3>
+							<h2>Points</h2>
+						</figcaption>
+					</figure>
+					</main>
+				</div>
+		   </div>
+	</body>
+	
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+        Junshin High School - Typhoon Game
+        </title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Brandon Wethy">
+
+
+	</head>
+	<style>
+				@font-face {
+  font-family: "Press Start 2P";
+  src: url("./PressStart2P-Regular.ttf") format("truetype");
+}
+		@font-face {
+  font-family: "Honk";
+  src: url("./Honk-Regular-VariableFont_MORF,SHLN.ttf") format("truetype");
+}
+	body {
+	font-family: "Honk", system-ui;
+    background-color: rgb(180,210,220);
+    background: gold;
+    background-image:
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+	}
+    #master {
+	text-align: center;
+	}
+	.TyphoonBoard {
+	margin-top: 200px;
+	}
+	h1 {
+	margin-top: -20px;
+	font-size: 90pt;
+	animation: floatUD 5s ease-in-out infinite;
+	}
+
+	@keyframes floatUD {
+	  0%   { transform: translateY(-20px); }
+	  50%  { transform: translateY(20px); }
+	  100% { transform: translateY(-20px); }
+	}
+	h2 {
+	font-family: "Press Start 2P", system-ui;
+	}
+	</style>
+	<script>
+
+	</script>
+	 <body>
+           <div id="master">
+		        <div id="wrapper">
+					<header>
+							<div class="TyphoonBoard">
+								<h2>You found...</h2>
+								<h1>+10 Points</h1>
+							</div>
+					</header>
+					<main>
+					</main>
+				</div>
+		   </div>
+	</body>
+	
+</html>

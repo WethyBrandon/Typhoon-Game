@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+        Junshin High School - Typhoon Game
+        </title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Brandon Wethy">
+
+
+	</head>
+	<style>
+			@font-face {
+  font-family: "Press Start 2P";
+  src: url("./PressStart2P-Regular.ttf") format("truetype");
+}
+		@font-face {
+  font-family: "Honk";
+  src: url("./Honk-Regular-VariableFont_MORF,SHLN.ttf") format("truetype");
+}
+	body {
+	font-family: "Press Start 2P", system-ui;
+	}
+    #master {
+	text-align: center;
+	}
+	.Typhoon_title {
+	 color: red;
+	}
+	.image-card {
+	  position: relative; /* establishes stacking context */
+	  display: inline-block;
+	}
+	.image-card img {
+	  display: block;
+	  width: 100%;
+	}
+	.overlay-text {
+	  font-family: "Honk", system-ui;
+	  position: absolute;
+	  top: 20%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  
+	  color: white;
+	  font-size: 24px;
+	  text-align: center;
+
+	  z-index: 2; /* ensures it sits above the image */
+	}
+	.image-card img {
+	  margin-top: -30px;
+	  z-index: 1;
+	  position: relative;
+	}
+	h3{
+	padding-top: 300px;
+	margin-top: 300px;
+	font-size: 100pt;
+	}
+	h2{
+	margin-top: -200px;
+	font-size: 50pt;
+	}
+	figure img {
+	  animation: rock 4s ease-in-out infinite;
+	  transform-origin: center;
+	}
+
+	@keyframes rock {
+	  0%   { transform: rotate(-3deg); }
+	  50%  { transform: rotate(3deg); }
+	  100% { transform: rotate(-3deg); }
+	}
+	.heh {
+	  position: absolute;
+	  font-family: "Honk", system-ui;
+	  font-size: 32px;
+	  color: yellow;
+	  pointer-events: none;
+	  z-index: 5;
+	  animation: floatAway 2s ease-out forwards;
+	}
+
+	@keyframes floatAway {
+	  0% {
+		opacity: 1;
+		transform: translate(0, 0) scale(1);
+	}
+	  100% {
+		opacity: 0;
+		transform: translate(var(--x), var(--y)) scale(1.5);
+		}
+	}
+	</style>
+	<script>
+function spawnHeh() {
+  const container = document.querySelector(".image-card");
+  const rect = container.getBoundingClientRect();
+
+  const heh = document.createElement("div");
+  heh.className = "heh";
+  heh.innerText = "Heh!";
+
+  // 🔥 Spawn near RIGHT side of image
+  heh.style.left = rect.width * 0.55 + "px";
+  heh.style.top = rect.height * 0.15 + "px";
+
+  // 🔥 Narrow cone pointing RIGHT
+  const angle = (Math.random() - 0.5) * (Math.PI / 3); // ±30°
+
+  const distance = 100 + Math.random() * 100;
+
+  // Rightward motion
+  const x = Math.cos(angle) * distance;
+  const y = Math.sin(angle) * distance;
+
+  heh.style.setProperty("--x", `${x}px`);
+  heh.style.setProperty("--y", `${y}px`);
+
+  container.appendChild(heh);
+
+  // Remove after animation
+  setTimeout(() => {
+    heh.remove();
+  }, 2000);
+}
+	// Spawn repeatedly
+	setInterval(spawnHeh, 900);
+	</script>
+	 <body>
+           <div id="master">
+		        <div id="wrapper">
+					<header>
+							<div class="TyphoonBoard"></div>
+							<h1>Eek! It's a</h1>
+							<div class="Typhoon_title"><h1>Thief!<h1></div>
+
+					</header>
+					<main>
+					<figure class="image-card">
+						<img src="Thief.png" alt="Example">
+						<figcaption class="overlay-text">
+							<h3>Steal</h3>
+							<h2>+2 Points</h2>
+						</figcaption>
+					</figure>
+					</main>
+				</div>
+		   </div>
+	</body>
+	
+</html>

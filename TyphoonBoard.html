@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Satsunan-Kogyo - Typhoon Game</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Brandon Wethy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+  <<script src="./confetti.browser.min.js"></script>
+
+  <style>
+@font-face {
+  font-family: "Bungee Spice";
+  src: url("./BungeeSpice-Regular.ttf") format("truetype");
+}
+body {
+  margin: 0;
+  font-family: "Bungee Spice", sans-serif;
+
+  background-color: cyan;
+
+  /* polka dot pattern */
+  background-image:
+    radial-gradient(white 18%, transparent 20%),
+    radial-gradient(white 18%, transparent 20%);
+
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: hidden;
+}
+
+
+    #master {
+      width: 1250px;
+      height: 800px;
+      margin: auto;
+      text-align: center;
+      padding: 10px;
+
+      background: rgba(0, 0, 0, 0.75);
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+
+      transform-origin: top center;
+    }
+
+    #wrapper {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 14px;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 36pt;
+      margin: 10px 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    /* FIXED TABLE ALIGNMENT */
+    table {
+      border-spacing: 6px;
+    }
+
+    td {
+      vertical-align: top;
+      padding: 0;
+    }
+
+    /* TILE */
+    .square1 {
+      border: 2px solid rgba(0,0,0,0.2);
+      background: linear-gradient(145deg, #d7f0ff, #b8e0f5);
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+      overflow: hidden;
+
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .square1:hover {
+      transform: scale(1.05);
+      transition: 0.15s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    /* BUTTONS */
+    button {
+      width: 100%;
+      height: 100%;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      filter: brightness(1.1);
+      transform: scale(1.03);
+    }
+
+    /* IFRAME */
+    #iframe {
+      height: 598px;
+      width: 576px;
+      margin-top: 4px;
+
+      border: 5px solid rgba(0,0,0,0.6);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      margin-top: 10px;
+      font-size: 10pt;
+      opacity: 0.8;
+    }
+
+    /* MOBILE FIX */
+    @media (max-width: 768px) {
+      td {
+        width: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="master">
+  <div id="wrapper">
+
+    <header>
+      <div class="TyphoonBoard"></div>
+      <div class="Typhoon_title">
+        <h1>Satsunan-Kogyo &#8226; Typhoon Board</h1>
+      </div>
+    </header>
+
+    <main style="margin-top: 50px; margin-left: 10px;">
+      <table>
+
+<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick1(this); setURL('Typhoon.html')">A1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">B1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">C1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">D1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">E1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">G1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick2(this); setURL('TenPoints.html'); launchConfetti();">H1</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">I1</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">A2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">B2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick6(this); setURL('Mothra.html'); launchConfetti2();">C2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick4(this); setURL('Thief.html')">D2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">E2</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom right, rgb(173,216,230) 50%, green 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick3(this); setURL('SwapPoints.html')">G2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H2</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">I2</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">A3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">B3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick2(this); setURL('TenPoints.html'); launchConfetti();">C3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">D3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">E3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F3</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom, rgb(173,216,230) 50%, green 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">G3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H3</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick1(this); setURL('Typhoon.html')">I3</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick4(this); setURL('Thief.html')">A4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">B4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">C4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">D4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick1(this); setURL('Typhoon.html')">E4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F4</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom, rgb(173,216,230) 50%, green 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">G4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H4</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">I4</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">A5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">B5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">C5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">D5</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom right, rgb(173,216,230) 50%, green 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">E5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick2(this); setURL('TenPoints.html'); launchConfetti()">G5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H5</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">I5</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">A6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">B6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">C6</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom right, rgb(173,216,230) 50%, green 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">D6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">E6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick1(this); setURL('Typhoon.html')">G6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">H6</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">I6</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">A7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">B7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">C7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">D7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick4(this); setURL('Thief.html')">E7</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom right, green 50%, rgb(173,216,230) 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">F7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">G7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H7</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick2(this); setURL('TenPoints.html'); launchConfetti()">I7</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick3(this); setURL('SwapPoints.html')">A8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">B8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick2(this); setURL('TenPoints.html'); launchConfetti()">C8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">D8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">E8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">F8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">G8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H8</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick4(this); setURL('Thief.html')">I8</button></div>
+							</td>
+							<td>
+								<div class="square1"><button id="myBtn" style="background-color: green; color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">A9</button></div>
+								<div class="square1"><button id="myBtn" style="background: linear-gradient(to bottom right, green 50%, rgb(173,216,230) 50%); color: white; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">B9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">C9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">D9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">E9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('FourPoints.html')">F9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick5(this); setURL('Godzilla.html'); launchConfetti3()">G9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">H9</button></div>
+								<div class="square1"><button id="myBtn" style="background-color: rgb(173,216,230); color: black; width: 64px; height: 64px;" onclick="handleClick(this); setURL('OnePoint.html')">I9</button></div>
+							</td>
+							<td>
+								<div class="iframe"><iframe id="iframe" src="TyphoonBoard01.html" scrolling="no"></iframe></div>
+							</td>
+
+      </table>
+
+      <footer>
+        &copy; 2026 Brandon Wethy. Background CSS by
+        <a href="https://codepen.io/danichk/pen/YyVeXa" target="_blank">Dani Checa</a>.
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+function handleClick(button) {
+  button.disabled = true;
+  button.innerText = "X";
+  button.style.background = "gray";
+  button.style.color = "white";
+}
+
+function handleClick2(button) {
+  button.disabled = true;
+  button.innerText = "🎊";
+  button.style.background = "gold";
+  button.style.color = "white";
+}
+
+function handleClick1(button) {
+  button.disabled = true;
+  button.innerText = "🌪️";
+  button.style.backgroundColor = "red";
+  button.style.color = "white";
+}
+
+function handleClick3(button) {
+  button.disabled = true;
+  button.innerText = "🌬️";
+  button.style.backgroundColor = "red";
+  button.style.color = "white";
+}
+
+function handleClick4(button) {
+  button.disabled = true;
+  button.innerText = "🥷🏼️";
+  button.style.backgroundColor = "red";
+  button.style.color = "white";
+}
+
+function handleClick5(button) {
+  button.disabled = true;
+  button.innerText = "🦖️";
+  button.style.backgroundColor = "red";
+  button.style.color = "white";
+}
+
+function handleClick6(button) {
+  button.disabled = true;
+  button.innerText = "🦋";
+  button.style.background = "gold";
+  button.style.color = "white";
+}
+
+function setURL(url) {
+  document.getElementById('iframe').src = url;
+}
+
+function launchConfetti() {
+  confetti({ particleCount: 250, spread: 360, scalar: 1.5, origin: {x:0.68,y:0.5} });
+}
+
+function launchConfetti2() {
+  confetti({
+    particleCount: 250,
+    spread: 360,
+    ticks: 200,
+    scalar: 1.5,
+    origin: { x: 0.68, y: 0.5 },
+    colors: ['#FFD700', '#FFC300', '#FFEA00', '#FFF8DC']
+  });
+}
+
+function launchConfetti3() {
+  confetti({
+    particleCount: 350,
+    spread: 360,
+    scalar: 1.5,
+    origin: { x: 0.68, y: 0.5 },
+    colors: ['#0033FF', '#007BFF', '#00BFFF']
+  });
+}
+
+function scaleToScreen() {
+  const baseWidth = 1250;
+  const scale = Math.min(
+    window.innerWidth / baseWidth,
+    window.innerHeight / 800
+  ) * 0.9;
+
+  document.getElementById("master").style.transform = `scale(${scale})`;
+}
+
+window.addEventListener("resize", scaleToScreen);
+window.addEventListener("load", scaleToScreen);
+</script>
+
+</body>
+</html>
